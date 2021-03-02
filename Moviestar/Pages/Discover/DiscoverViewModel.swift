@@ -19,12 +19,15 @@ final class DiscoverViewModel {
 
     private var movies: [Movie] = [] {
         didSet {
-            delegate?.discoverViewModel(self, didLoad: movies.map { movie in
-                return MovieCell.ViewModel(
-                    id: movie.id,
-                    title: movie.title
-                )
-            })
+            DispatchQueue.main.async {
+                self.delegate?.discoverViewModel(self, didLoad: self.movies.map { movie in
+                    return MovieCell.ViewModel(
+                        id: movie.id,
+                        title: movie.title,
+                        posterPath: movie.posterPath
+                    )
+                })
+            }
         }
     }
 
@@ -33,18 +36,21 @@ final class DiscoverViewModel {
     }
 
     func viewDidLoad() {
-        Movie.getNowPlaying().response(using: session.client) { response in
+        Movie.getNowPlaying().response(using: session.client) { [weak self] response in
             print("--- EXAMPLE: Movies that are now playing in theatres ---")
             dump(response)
+            
+            self?.movies = response.value?.results ?? []
             print("--- END OF EXAMPLE ---")
         }
     }
   
     func searchPerformed(_ query: String) {
         if query.count >= 2 {
-            Movie.getSearchResults(query).response(using: session.client) { response in
+            Movie.getSearchResults(query).response(using: session.client) { [weak self] response in
                 print("--- SEARCH RESPONSE:  ---")
                 dump(response)
+                self?.movies = response.value?.results ?? []
                 print("--- END OF SEARCH RESPONSE ---")
             }
         }
