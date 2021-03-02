@@ -78,4 +78,13 @@ extension DiscoverViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+      guard let searchText = searchBar.text else { return }
+      if searchText.count >= 2 {
+        viewModel.searchPerformed(searchText)
+      } else {
+        print("Too short for a query!")
+      }
+    }
 }

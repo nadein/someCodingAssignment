@@ -39,4 +39,14 @@ final class DiscoverViewModel {
             print("--- END OF EXAMPLE ---")
         }
     }
+  
+    func searchPerformed(_ query: String) {
+        if query.count >= 2 {
+            Movie.getSearchResults(query).response(using: session.client) { response in
+                print("--- SEARCH RESPONSE:  ---")
+                dump(response)
+                print("--- END OF SEARCH RESPONSE ---")
+            }
+        }
+    }
 }

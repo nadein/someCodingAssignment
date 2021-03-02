@@ -20,4 +20,15 @@ extension Movie {
             needsAuthorization: true
         )
     }
+  
+    public static func getSearchResults(_ query: String) -> Request<Results<[Movie]>, APIError> {
+        return Request(
+            path: "/search/movie",
+            method: .get,
+            parameters: [QueryParameters([.init(name: "query", value: query)])],
+            resource: Results<[Movie]>.dataDecodeable(),
+            error: APIError.init,
+            needsAuthorization: true
+        )
+    }
 }
