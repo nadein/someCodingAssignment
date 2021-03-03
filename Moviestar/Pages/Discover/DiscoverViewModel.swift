@@ -34,12 +34,15 @@ final class DiscoverViewModel {
     init(session: Session) {
         self.session = session
     }
+    
+    func movieFor(indexPath: IndexPath) -> Movie {
+        return movies[indexPath.item]
+    }
 
     func viewDidLoad() {
         Movie.getNowPlaying().response(using: session.client) { [weak self] response in
             print("--- EXAMPLE: Movies that are now playing in theatres ---")
             dump(response)
-            
             self?.movies = response.value?.results ?? []
             print("--- END OF EXAMPLE ---")
         }

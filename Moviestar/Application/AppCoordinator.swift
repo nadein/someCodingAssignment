@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Entities
 
 final class AppCoordinator {
     private let session = Session()
@@ -17,9 +18,17 @@ final class AppCoordinator {
     }
 
     func start() {
-        let viewController = DiscoverViewController(viewModel: .init(session: session))
+        let onMovieSelect = { movie in
+            self.showDetails(movie)
+        }
+        let viewController = DiscoverViewController(viewModel: .init(session: session), onMovieSelect: onMovieSelect)
         navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+    }
+    
+    func showDetails(_ movie: Movie) {
+        let viewController = DetailsViewController(viewModel: .init(movie: movie))
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

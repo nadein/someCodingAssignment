@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import Entities
 
 final class DiscoverViewController: UIViewController {
+    
     private let contentView = DiscoverView()
     private let viewModel: DiscoverViewModel
+    private let onMovieSelect: (Movie) -> Void
     private lazy var searchBar: UISearchBar = .init(frame: .zero)
     private typealias CellRegistration = UICollectionView.CellRegistration<MovieCell, MovieCell.ViewModel>
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, MovieCell.ViewModel>
@@ -32,8 +35,9 @@ final class DiscoverViewController: UIViewController {
         )
     }()
 
-    init(viewModel: DiscoverViewModel) {
+    init(viewModel: DiscoverViewModel, onMovieSelect: @escaping (Movie) -> Void) {
         self.viewModel = viewModel
+        self.onMovieSelect = onMovieSelect
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -55,6 +59,7 @@ final class DiscoverViewController: UIViewController {
     private func setupDelegates() {
         viewModel.delegate = self
         searchBar.delegate = self
+        contentView.collectionView.delegate = self
     }
 
     private func setupNavigationBar() {
@@ -86,5 +91,12 @@ extension DiscoverViewController: UISearchBarDelegate {
       } else {
         print("Too short for a query!")
       }
+    }
+}
+
+extension DiscoverViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = viewModel.movieFor(indexPath: indexPath)
+        onMovieSelect(movie)
     }
 }
