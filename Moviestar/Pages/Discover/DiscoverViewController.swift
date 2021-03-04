@@ -50,6 +50,7 @@ final class DiscoverViewController: UIViewController {
         setupDelegates()
         setupNavigationBar()
         viewModel.viewDidLoad()
+        setupEmptyState()
     }
 
     override func loadView() {
@@ -66,6 +67,13 @@ final class DiscoverViewController: UIViewController {
         searchBar.placeholder = "Search for movies..."
         navigationItem.titleView = searchBar
     }
+    
+    private func setupEmptyState() {
+        contentView.emptyStateView.buttonAction = { [weak self] in
+            self?.viewModel.viewDidLoad()
+            self?.contentView.emptyStateView.hide()
+        }
+    }
 }
 
 // MARK: DiscoverViewModel Delegate
@@ -75,6 +83,11 @@ extension DiscoverViewController: DiscoverViewModelDelegate {
         snapshot.appendSections([Section.movies])
         snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: true)
+        if data.isEmpty {
+            contentView.emptyStateView.show()
+        } else {
+            contentView.emptyStateView.hide()
+        }
     }
 }
 

@@ -42,6 +42,7 @@
 		FA8C8B3625EEBB91007A65D0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C8B3525EEBB91007A65D0 /* DetailsViewController.swift */; };
 		FA8C8B3E25EEBC26007A65D0 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C8B3D25EEBC26007A65D0 /* DetailsViewModel.swift */; };
 		FA8C8B4325EEBC4F007A65D0 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C8B4225EEBC4F007A65D0 /* DetailsView.swift */; };
+		FA8C8B5B25F1345D007A65D0 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C8B4D25F127ED007A65D0 /* EmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		FA8C8B3525EEBB91007A65D0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		FA8C8B3D25EEBC26007A65D0 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		FA8C8B4225EEBC4F007A65D0 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		FA8C8B4D25F127ED007A65D0 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 			children = (
 				ECE6B4DA25B72D8C0074BADE /* Cells */,
 				ECE6B44925B70E0C0074BADE /* DiscoverView.swift */,
+				FA8C8B4D25F127ED007A65D0 /* EmptyStateView.swift */,
 				ECE6B44D25B70E150074BADE /* DiscoverViewModel.swift */,
 				ECE6B45025B70E1F0074BADE /* DiscoverViewController.swift */,
 			);
@@ -576,6 +579,7 @@
 				FA8C8B3E25EEBC26007A65D0 /* DetailsViewModel.swift in Sources */,
 				ECE6B44A25B70E0C0074BADE /* DiscoverView.swift in Sources */,
 				ECE6B45125B70E1F0074BADE /* DiscoverViewController.swift in Sources */,
+				FA8C8B5B25F1345D007A65D0 /* EmptyStateView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

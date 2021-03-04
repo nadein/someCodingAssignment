@@ -29,6 +29,11 @@ final class DiscoverView: UIView {
         this.backgroundColor = .white
         return this
     }()
+    let emptyStateView: EmptyStateView = {
+        let this = EmptyStateView()
+        this.translatesAutoresizingMaskIntoConstraints = false
+        return this
+    }()
 
     convenience init() {
         self.init(frame: .zero)
@@ -43,6 +48,8 @@ final class DiscoverView: UIView {
 
     private func configureSubviews() {
         addSubview(collectionView)
+        addSubview(emptyStateView)
+        emptyStateView.hide()
     }
 
     private func configureConstraints() {
@@ -51,6 +58,11 @@ final class DiscoverView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            
+            emptyStateView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            emptyStateView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            emptyStateView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyStateView.leadingAnchor.constraint(equalTo: leadingAnchor),
         ])
     }
 }
