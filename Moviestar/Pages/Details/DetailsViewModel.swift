@@ -16,7 +16,7 @@ final class DetailsViewModel: NSObject {
         self.movie = movie
     }
     
-    func viewDidLoad() {
-        // TODO
+    func viewDidLoad(_ view: DetailsView) {
+        view.populate(data: DetailsView.ViewModel(id: movie.id, title: movie.title, posterPath: movie.posterPath, overview: movie.overview))
     }
 }

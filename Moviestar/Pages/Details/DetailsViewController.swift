@@ -23,7 +23,8 @@ final class DetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewDidLoad()
+        title = "Details"
+        viewModel.viewDidLoad(contentView)
     }
     
     override func loadView() {

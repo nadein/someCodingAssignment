@@ -88,8 +88,11 @@ extension DiscoverViewController: UISearchBarDelegate {
       guard let searchText = searchBar.text else { return }
       if searchText.count >= 2 {
         viewModel.searchPerformed(searchText)
+        searchBar.resignFirstResponder()
       } else {
-        print("Too short for a query!")
+        let alert = UIAlertController(title: "Wrong input", message: "Too short for a query! Try to enter at least 2 characters.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
       }
     }
 }
