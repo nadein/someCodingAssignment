@@ -1,1 +1,1 @@
-Some coding assinment I took recently.
+Some coding assignment I took recently.
