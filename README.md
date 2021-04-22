@@ -1,1 +1,1 @@
-# interview-project-moviestar
+Some coding assinment I took recently.
